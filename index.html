@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl"><head>
+<html lang="he" dir="rtl">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אתר המתכונים של ענית</title>
@@ -21,7 +22,9 @@
 
         .search-box { width: 100%; padding: 15px; border: 2px solid var(--lavender); border-radius: 50px; font-size: 16px; box-sizing: border-box; margin-bottom: 20px; outline: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         
-        .categories { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none; }
+        .categories { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none; -ms-overflow-style: none; }
+        .categories::-webkit-scrollbar { display: none; }
+        
         .category-btn { background: white; border: 1px solid var(--lavender); padding: 10px 25px; border-radius: 50px; cursor: pointer; white-space: nowrap; font-weight: 600; color: var(--deep-purple); transition: 0.3s; }
         .category-btn.active { background: var(--deep-purple); color: white; border-color: var(--deep-purple); }
 
@@ -33,16 +36,14 @@
         .recipe-category-tag { font-size: 0.85rem; color: var(--olive); font-weight: bold; margin-bottom: 15px; display: block; }
         .recipe-text { white-space: pre-wrap; font-size: 1.05rem; line-height: 1.7; color: #444; }
 
-        /* כפתור פלוס צף */
         .fab { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: var(--deep-purple); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; border: 2px solid var(--mustard); }
 
-        /* פאנל הוספה מוסתר */
         .add-pane { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 30px; box-shadow: 0 0 50px rgba(0,0,0,0.2); width: 90%; max-width: 500px; z-index: 1001; }
         .add-pane.open { display: block; }
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
         .overlay.open { display: block; }
 
-        .add-pane input, .add-pane textarea, .add-pane select { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid var(--lavender); border-radius: 12px; font-family: inherit; }
+        .add-pane input, .add-pane textarea, .add-pane select { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid var(--lavender); border-radius: 12px; font-family: inherit; box-sizing: border-box; }
         .add-btn { background: var(--olive); color: white; border: none; padding: 15px; border-radius: 12px; width: 100%; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-bottom: 10px; }
         .save-file-btn { background: var(--deep-purple); color: white; border: none; padding: 10px; border-radius: 12px; width: 100%; cursor: pointer; font-size: 0.9rem; }
         .close-btn { background: none; border: none; color: #999; float: left; cursor: pointer; font-size: 1.2rem; }
@@ -61,60 +62,32 @@
         <button class="category-btn active" onclick="filterCat('הכל', this)">הכל</button>
         <button class="category-btn" onclick="filterCat('לחמים ומחמצות', this)">לחמים ומחמצות</button>
         <button class="category-btn" onclick="filterCat('עוגות ועוגיות', this)">עוגות ועוגיות</button>
-        <button class="category-btn" onclick="filterCat('מאפים ופשטידות', this)">מאפים ופשטידות</button>
-        <button class="category-btn" onclick="filterCat('תבשילי קדירה', this)">תבשילי קדירה</button>
+        <button class="category-btn" onclick="filterCat('מאפים מלוחים', this)">מאפים מלוחים</button>
+        <button class="category-btn" onclick="filterCat('תבשילים וסירים', this)">תבשילים וסירים</button>
         <button class="category-btn" onclick="filterCat('ארוחות קלות', this)">ארוחות קלות</button>
         <button class="category-btn" onclick="filterCat('סלטים וממרחים', this)">סלטים וממרחים</button>
+        <button class="category-btn" onclick="filterCat('קינוחים', this)">קינוחים</button>
     </div>
 
-    <main id="recipeList"><div class="recipe-card" data-category="עוגות ועוגיות"><div class="recipe-content"><span class="recipe-category-tag">עוגות ועוגיות</span><div class="recipe-title">עוגת לימון שמנת חמוצה רכה - קרן אגם</div><div class="recipe-text">עוגת לימון שמנת חמוצה רכה - קרן אגם
-תבנית עגולה 22 ס״מ
-(גרסת פרווה בסוף המתכון למטה)
-
-מצרכים למתכון:
-3&nbsp;ביצים&nbsp;גודל&nbsp;L
-1.5&nbsp;כוסות(300 גר')&nbsp;&nbsp;סוכר לבן
-כוס(200 גר') שמן קנולה
-כפית תמצית וניל
-גרידת לימון מלימון גדול
-4 כפות מיץ לימון
-2 כוסות (280 גר') קמח לבן
-2 כפיות אבקת אפייה
-1 מיכל(200 מ״ל) שמנת חמוצה 27%
-
-אופן הכנה:
-מחממים&nbsp;תנור&nbsp;ל&nbsp;180&nbsp;מעלות&nbsp;ומשמנים&nbsp;היטב&nbsp;תבנית&nbsp;אפייה
-במיקסר מקציפים ביצים וסוכר במהירות גבוהה למשך 6-8 דקות עד לקבלת תערובת תפוחה
-מוסיפים את השמן, לאט בזרם חלש, וממשיכים להקציף
-מוסיפים מיץ לימון, גרידת לימון, תמצית וניל ושמנת חמוצה ומערבבים
-מורידים את מהירות המיקסר ומוסיפים קמח ואבקת אפייה, ומערבבים היטב לקבלת תערובת אחידה
-מעבירים לתבנית ואופים כ 35-40 דקות, עד שקיסם הננעץ במרכז העוגה יוצא יבש
-מקשטים באבקת סוכר ומגישים.
-
-הערות למתכון:
-השימוש בשמנת חמוצה עם אחוזי שומן גבוהים משנה את כל חוקי המשחק של העוגה הזו, אני לא ממליצה להשתמש
-בשמנת פחות מ 15% שומן.
-העוגה נשמרת כשהיא עטופה היטב במקרר עד כארבעה ימים
-
-**לפרווה המירו שמנת חמוצה בקרם קוקוס, או שמנת צימחית באותה הכמות.
-**את השמנת החמוצה ניתן להמיר בכמות זהה של יוגורט, גבינת ריקוטה, או שמנת מתוקה</div></div></div></main>
+    <main id="recipeList"></main>
 </div>
 
 <div class="fab" onclick="toggleAddPane()">+</div>
-<div class="overlay open" id="overlay" onclick="toggleAddPane()"></div>
+<div class="overlay" id="overlay" onclick="toggleAddPane()"></div>
 
-<section class="add-pane open" id="addPane">
+<section class="add-pane" id="addPane">
     <button class="close-btn" onclick="toggleAddPane()">✕</button>
     <h3>הוספת מתכון חדש</h3>
     <input type="text" id="newTitle" placeholder="שם המתכון">
     <select id="newCategory">
-        <option value="" disabled="" selected="">בחרי קטגוריה</option>
+        <option value="" disabled selected>בחרי קטגוריה</option>
         <option value="לחמים ומחמצות">לחמים ומחמצות</option>
         <option value="עוגות ועוגיות">עוגות ועוגיות</option>
-        <option value="מאפים ופשטידות">מאפים ופשטידות</option>
-        <option value="תבשילי קדירה">תבשילי קדירה</option>
+        <option value="מאפים מלוחים">מאפים מלוחים</option>
+        <option value="תבשילים וסירים">תבשילים וסירים</option>
         <option value="ארוחות קלות">ארוחות קלות</option>
         <option value="סלטים וממרחים">סלטים וממרחים</option>
+        <option value="קינוחים">קינוחים</option>
     </select>
     <textarea id="newText" rows="6" placeholder="הדביקי את המתכון כאן..."></textarea>
     <button class="add-btn" onclick="addRecipe()">1. הוספה לאתר</button>
@@ -123,8 +96,10 @@
 
 <script>
     function toggleAddPane() {
-        document.getElementById('addPane').classList.toggle('open');
-        document.getElementById('overlay').classList.toggle('open');
+        const pane = document.getElementById('addPane');
+        const overlay = document.getElementById('overlay');
+        pane.classList.toggle('open');
+        overlay.classList.toggle('open');
     }
 
     function filterRecipes() {
@@ -160,6 +135,9 @@
     }
 
     function saveFullFile() {
+        document.getElementById('addPane').classList.remove('open');
+        document.getElementById('overlay').classList.remove('open');
+        
         const currentContent = document.documentElement.outerHTML;
         const blob = new Blob(['<!DOCTYPE html>\n' + currentContent], { type: 'text/html' });
         const a = document.createElement('a');
@@ -168,5 +146,5 @@
         a.click();
     }
 </script>
-
-</body></html>
+</body>
+</html>
